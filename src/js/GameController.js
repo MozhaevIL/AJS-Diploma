@@ -82,7 +82,7 @@ export default class GameController {
         }
       }
     }
-    //перемещение
+    // перемещение
     if (this.gameState.selectedCharacter && this.gameState.getMovementRange().includes(index)
     && getFreePositions(this.positions, this.team.getPositionedCharacters()).includes(index)) {
       this.gamePlay.deselectCell(this.gameState.selectedCharacter.position);
