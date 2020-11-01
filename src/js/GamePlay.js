@@ -196,6 +196,12 @@ export default class GamePlay {
       .filter(o => o.startsWith('selected')));
   }
 
+  removeMarkers(index, color) {
+    const cell = this.cells[index];
+    cell.classList.remove(...Array.from(cell.classList)
+      .filter(o => o.startsWith(`selected-${color}`)));
+  }
+
   showCellTooltip(message, index) {
     this.cells[index].title = message;
   }
@@ -203,7 +209,7 @@ export default class GamePlay {
   hideCellTooltip(index) {
     this.cells[index].title = '';
   }
-  
+
   showDamage(index, damage) {
     return new Promise((resolve) => {
       const cell = this.cells[index];
@@ -214,6 +220,7 @@ export default class GamePlay {
 
       damageEl.addEventListener('animationend', () => {
         cell.removeChild(damageEl);
+        console.log('animation end');
         resolve();
       });
     });
